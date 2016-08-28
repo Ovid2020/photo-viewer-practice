@@ -1,6 +1,6 @@
 var PicView = props => (
 
-	<img class='picImage' src={props.pic.url}>
+	<img class='picImage' src={ props.pic.url }>
 
 );
 

@@ -1,7 +1,7 @@
 var PicList = props => (
 	
-	{props.picData.map( pic => 
-		<PicListEntry pic = {pic} />
+	{props.picList.map( pic => 
+		<PicListEntry pic={ pic } />
 	)}
 
 );
