@@ -3,9 +3,9 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			pic: {title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw'},
-			picList: [{title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw'},
-								{title: 'pic2', url: 'http://www.tehcute.com/pics/201110/marshmellow-kitten-big.jpg'}]
+			pic: {title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw', rating: 1},
+			picList: [{title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw', rating: 1},
+								{title: 'pic2', url: 'http://www.tehcute.com/pics/201110/marshmellow-kitten-big.jpg', rating: 3}]
 		};
 	}
 
@@ -19,11 +19,12 @@ class App extends React.Component {
 		var context = this;
 		$.ajax({
 			'method': 'GET',
+			'url': 'localhost:3000/pics',
 			'content-type': 'application/json',
 			'success': ( data => {
 				context.setState({
 					picList: data.results.picList,
-					pic: this.picList[0];
+					pic: this.picList[0]
 				})
 			}), 
 			'error': ( error => {
@@ -46,3 +47,7 @@ class App extends React.Component {
 	}
 
 }
+
+function getPics(){
+
+};
