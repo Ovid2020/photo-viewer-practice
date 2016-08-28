@@ -3,6 +3,17 @@ div.picEntry {
 	width: 100%;
 }
 
+span.picTitle {
+	display:inline-block;
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
 img.picImage {
 	width: 100%;
+}
+
+.mid-body {
+	margin-top: 10em;
 }
