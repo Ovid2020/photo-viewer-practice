@@ -3,11 +3,14 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			pic: {title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw', rating: 1},
-			picList: [{title: 'pic1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6t1DVsLltecgdcENQX927x8yQCgjLbj-QmPzff-T8Jtr7CNjasw', rating: 1},
-								{title: 'pic2', url: 'http://www.tehcute.com/pics/201110/marshmellow-kitten-big.jpg', rating: 3}]
+			picList: [{title: null, url: null, rating: null}], 
+			pic: {title: null, url: null, rating: null}
 		};
 	}
+
+	componentDidMount() {
+    this.getPicsFromServer();
+  }
 
 	handleListClick(pic) {
 		this.setState({
@@ -16,15 +19,17 @@ class App extends React.Component {
 	}
 
 	getPicsFromServer() {
+		console.log("GET PICS");
 		var context = this;
 		$.ajax({
 			'method': 'GET',
-			'url': 'localhost:3000/pics',
+			'url': 'http://localhost:3000/pics',
 			'content-type': 'application/json',
 			'success': ( data => {
+				console.log("SUCCESS");
 				context.setState({
-					picList: data.results.picList,
-					pic: this.picList[0]
+					picList: data.results,
+					pic: data.results[0]
 				})
 			}), 
 			'error': ( error => {
