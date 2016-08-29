@@ -19,23 +19,7 @@ class App extends React.Component {
 	}
 
 	getPicsFromServer() {
-		console.log("GET PICS");
-		var context = this;
-		$.ajax({
-			'method': 'GET',
-			'url': 'http://localhost:3000/pics',
-			'content-type': 'application/json',
-			'success': ( data => {
-				console.log("SUCCESS");
-				context.setState({
-					picList: data.results,
-					pic: data.results[0]
-				})
-			}), 
-			'error': ( error => {
-				console.log(error);
-			})
-		});
+		getPics(this);
 	}
 
 	render() {
@@ -53,6 +37,21 @@ class App extends React.Component {
 
 }
 
-function getPics(){
 
+
+function getPics(context) {
+	$.ajax({
+		'method': 'GET',
+		'url': 'http://localhost:3000/pics',
+		'content-type': 'application/json',
+		'success': ( data => {
+			context.setState({
+				picList: data.results,
+				pic: data.results[0]
+			})
+		}), 
+		'error': ( error => {
+			console.log(error);
+		})
+	});
 };
