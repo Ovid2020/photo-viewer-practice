@@ -40,11 +40,14 @@ class App extends React.Component {
 
 
 function getPics(context) {
+			console.log("request...");
+
 	$.ajax({
 		'method': 'GET',
 		'url': 'http://localhost:3000/pics',
 		'content-type': 'application/json',
 		'success': ( data => {
+			console.log("Success: ", data);
 			context.setState({
 				picList: data.results,
 				pic: data.results[0]
